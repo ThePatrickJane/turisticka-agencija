@@ -83,7 +83,7 @@
               </v-row>
               <v-row>
                 <v-col cols="12">
-                  <v-btn color="blue darken-1" dark>Registruj se</v-btn>
+                  <v-btn color="blue darken-1" dark depressed tile>Registruj se</v-btn>
                 </v-col>
               </v-row>
             </v-container>

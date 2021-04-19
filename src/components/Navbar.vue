@@ -2,8 +2,8 @@
   <div>
     <v-app-bar color="blue darken-3" dark height="80" flat>
       <v-toolbar-title class="text-uppercase">
-        <span class="text-h4">Turisticka</span>
-        <span style="color: lightblue" class="">agencija</span>
+        <span class="text-h4">Dragulj</span>
+        <span style="color: lightblue" class="">turizma</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <Register class="hidden-sm-and-down" />
