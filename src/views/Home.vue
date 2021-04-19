@@ -3,7 +3,7 @@
     <v-parallax
       dark
       height="300"
-      :src="require('@/assets/banner.jpg')"
+      :src="require('@/assets/bannerPLAVA.jpg')"
     >
       <v-row
         align="center"
@@ -13,17 +13,19 @@
           class="text-center"
           cols="12"
         >
-          <h1 class="display-1 font-weight-thin mb-5">
-            Pogledajte ponudu
-          </h1>
-          <v-btn text color="white" @click="$vuetify.goTo('#grad')">
-            <v-icon>mdi-arrow-down</v-icon>
-          </v-btn>
+          <v-card dark max-width="400" class="mx-auto pa-3" color="rgb(0,0,0,0.3)">
+            <h1 class="subheader font-weight-thin mb-5 text-uppercase">
+              Pogledajte <br> ponudu
+            </h1>
+            <v-btn text color="white" @click="$vuetify.goTo('#grad')">
+              <v-icon>mdi-arrow-down</v-icon>
+            </v-btn>
+          </v-card>
         </v-col>
       </v-row>
     </v-parallax>
 
-    <div id="grad" style="height: 800px">
+    <div id="grad">
       <v-card dark tile flat color="light-blue darken-4">
         <v-card-title>
           <v-icon class="mx-3">mdi-city-variant</v-icon>
