@@ -19,7 +19,7 @@
 
       <v-card>
         <v-card-text>
-          <v-form>
+          <v-form ref="logForm">
             <v-container>
               <v-row style="background-color: lightblue" class="my-2">
                 <v-col>Prijava</v-col>
@@ -27,6 +27,7 @@
               <v-row>
                 <v-col cols="12">
                   <v-text-field
+                    :rules="usernameRule"
                     dense
                     label="Korisnicko ime"
                   ></v-text-field>
@@ -35,6 +36,7 @@
               <v-row>
                 <v-col cols="12">
                   <v-text-field
+                    :rules="passwordRule"
                     dense
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     :type="show ? 'text' : 'password'"
@@ -45,7 +47,7 @@
               </v-row>
               <v-row>
                 <v-col cols="12">
-                  <v-btn color="blue darken-1" dark depressed tile>Prijavi se</v-btn>
+                  <v-btn color="blue darken-1" dark depressed tile @click="loginValidate">Prijavi se</v-btn>
                 </v-col>
               </v-row>
             </v-container>
@@ -63,7 +65,18 @@ export default {
   data () {
     return { 
       dialog: false,
-      show: false
+      show: false,
+      usernameRule: [
+        v => !!v || 'Polje ne sme biti prazno'
+      ],
+      passwordRule: [
+        v => !!v || 'Polje ne sme biti prazno'
+      ]
+    }
+  },
+  methods: {
+    loginValidate() {
+      this.$refs.logForm.validate()
     }
   }
 }

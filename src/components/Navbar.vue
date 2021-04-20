@@ -1,14 +1,25 @@
 <template>
   <div>
     <v-app-bar color="blue darken-3" dark height="80" flat>
+      <router-link to="/">
+        <v-img
+          class="mx-4"
+          :src="require('@/assets/logo.png')"
+          max-height="40"
+          max-width="40"
+          contain
+        ></v-img>
+      </router-link>
       <v-toolbar-title class="text-uppercase">
-        <span class="text-h4">Dragulj</span>
-        <span style="color: lightblue" class="">turizma</span>
+        <router-link to="/" style="text-decoration: none; color: white">
+          <span class="text-h4">Dragulj</span>
+          <span style="color: lightblue">turizma</span>
+        </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <Register class="hidden-sm-and-down" />
       <Login class="hidden-sm-and-down" />
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon class="mr-4" @click="drawer = true"></v-app-bar-nav-icon>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary color="blue darken-4" dark>

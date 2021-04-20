@@ -17,7 +17,7 @@
 
       <v-card>
         <v-card-text>
-          <v-form>
+          <v-form ref="regForm">
             <v-container>
               <v-row style="background-color: lightblue" class="mt-2">
                 <v-col>Registracija</v-col>
@@ -25,12 +25,14 @@
               <v-row>
                 <v-col cols="6">
                   <v-text-field
+                    :rules="emptyRule"
                     dense
                     label="Korisnicko ime"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="6">
                   <v-text-field
+                    :rules="passwordRule"
                     dense
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     :type="show ? 'text' : 'password'"
@@ -41,25 +43,29 @@
               </v-row>
               <v-row>
                 <v-col cols="6">
-                  <v-text-field dense label="Ime"></v-text-field>
+                  <v-text-field dense label="Ime" :rules="emptyRule"></v-text-field>
                 </v-col>
                 <v-col cols="6">
-                  <v-text-field dense label="Prezime"></v-text-field>
+                  <v-text-field dense label="Prezime" :rules="emptyRule"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field dense label="Email"></v-text-field>
+                  <v-text-field dense label="Email" :rules="emailRule"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field dense label="Adresa stanovanja"></v-text-field>
+                  <v-text-field dense label="Adresa stanovanja" :rules="emptyRule"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="6">
-                  <v-text-field dense label="Telefon"></v-text-field>
+                  <v-text-field 
+                    placeholder="Format je 06xxxxxxxx" 
+                    dense 
+                    label="Telefon" 
+                    :rules="phoneRule"></v-text-field>
                 </v-col>
                 <v-col cols="6">
                   <v-menu
@@ -69,6 +75,7 @@
                   >
                     <template v-slot:activator="{ on, attrs }">
                       <v-text-field
+                        :rules="emptyRule"
                         dense
                         v-model="date"
                         label="Datum rodjenja"
@@ -83,7 +90,7 @@
               </v-row>
               <v-row>
                 <v-col cols="12">
-                  <v-btn color="blue darken-1" dark depressed tile>Registruj se</v-btn>
+                  <v-btn color="blue darken-1" dark depressed tile @click="registerValidate">Registruj se</v-btn>
                 </v-col>
               </v-row>
             </v-container>
@@ -102,7 +109,27 @@ export default {
       dialog: false,
       show: false,
       menu: false,
-      date: ''
+      date: '',
+      emptyRule: [
+        v => !!v || 'Polje ne sme biti prazno'
+      ],
+      passwordRule: [
+        v => !!v || 'Polje ne sme biti prazno',
+        v => (v && v.length >= 8) || 'Minimum je 8 karaktera',
+      ],
+      emailRule: [
+        v => !!v || 'Polje ne sme biti prazno',
+        v => /.+@.+\..+/.test(v) || 'E-mail nije validan',
+      ],
+      phoneRule: [
+        v => !!v || 'Polje ne sme biti prazno',
+        v => /^06(([0-6]|[8-9])\d{7}|(77|78)\d{6}){1}$/.test(v) || 'Broj telefona nije validan',
+      ]
+    }
+  },
+  methods: {
+    registerValidate() {
+      this.$refs.regForm.validate()
     }
   }
 }
