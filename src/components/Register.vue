@@ -19,7 +19,7 @@
         <v-card-text>
           <v-form ref="regForm">
             <v-container>
-              <v-row style="background-color: lightblue" class="mt-2">
+              <v-row style="background-color: lightblue" class="mt-2" id="reg">
                 <v-col>Registracija</v-col>
               </v-row>
               <v-row>
@@ -55,19 +55,19 @@
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="12">
+                <v-col cols="7">
                   <v-text-field dense label="Adresa stanovanja" :rules="emptyRule"></v-text-field>
                 </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="6">
+                <v-col cols="5">
                   <v-text-field 
-                    placeholder="Format je 06xxxxxxxx" 
+                    prefix="+381" 
                     dense 
                     label="Telefon" 
                     :rules="phoneRule"></v-text-field>
                 </v-col>
-                <v-col cols="6">
+              </v-row>
+              <v-row>
+                <v-col cols="12">
                   <v-menu
                     v-model="menu"
                     transition="scale-transition"
@@ -75,6 +75,7 @@
                   >
                     <template v-slot:activator="{ on, attrs }">
                       <v-text-field
+                        prepend-icon="mdi-calendar"
                         :rules="emptyRule"
                         dense
                         v-model="date"
@@ -123,13 +124,18 @@ export default {
       ],
       phoneRule: [
         v => !!v || 'Polje ne sme biti prazno',
-        v => /^06(([0-6]|[8-9])\d{7}|(77|78)\d{6}){1}$/.test(v) || 'Broj telefona nije validan',
+        v => /^6(([0-6]|[8-9])\d{7}|(77|78)\d{6}){1}$/.test(v) || 'Broj telefona nije validan',
       ]
     }
   },
   methods: {
     registerValidate() {
-      this.$refs.regForm.validate()
+      let reg = document.getElementById("reg")
+
+      if (this.$refs.regForm.validate()) 
+        reg.style.backgroundColor = "lightgreen"
+      else 
+        reg.style.backgroundColor = "rgb(224, 79, 79)"
     }
   }
 }

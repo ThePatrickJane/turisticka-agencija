@@ -1,25 +1,25 @@
 <template>
   <div>
-    <v-app-bar color="blue darken-3" dark height="80" flat>
+    <v-app-bar color="blue darken-4" dark height="80" flat>
       <router-link to="/">
         <v-img
-          class="mx-4"
+          class="mr-4 ml-2"
           :src="require('@/assets/logo.png')"
-          max-height="40"
-          max-width="40"
+          max-height="35"
+          max-width="35"
           contain
         ></v-img>
       </router-link>
       <v-toolbar-title class="text-uppercase">
         <router-link to="/" style="text-decoration: none; color: white">
-          <span class="text-h4">Dragulj</span>
+          <span class="text-h5">Dijamant</span>
           <span style="color: lightblue">turizma</span>
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <Register class="hidden-sm-and-down" />
       <Login class="hidden-sm-and-down" />
-      <v-app-bar-nav-icon class="mr-4" @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon class="mr-2" @click="drawer = true"></v-app-bar-nav-icon>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary color="blue darken-4" dark>
@@ -67,7 +67,7 @@
                     <v-icon>mdi-account</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <v-btn text>Korisnici</v-btn>
+                    <v-btn text to="/korisnici">Korisnici</v-btn>
                   </v-list-item-content>
                 </v-list-item>
               </v-list-item-group>

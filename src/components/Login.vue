@@ -21,7 +21,7 @@
         <v-card-text>
           <v-form ref="logForm">
             <v-container>
-              <v-row style="background-color: lightblue" class="my-2">
+              <v-row style="background-color: lightblue" class="my-2" id="log">
                 <v-col>Prijava</v-col>
               </v-row>
               <v-row>
@@ -76,7 +76,12 @@ export default {
   },
   methods: {
     loginValidate() {
-      this.$refs.logForm.validate()
+      let log = document.getElementById("log")
+
+      if (this.$refs.logForm.validate()) 
+        log.style.backgroundColor = "lightgreen"
+      else 
+        log.style.backgroundColor = "rgb(224, 79, 79)"
     }
   }
 }
