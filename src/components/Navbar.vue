@@ -23,16 +23,6 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary color="blue darken-4" dark>
-      <!-- <v-row class="pt-5">
-        <v-col cols="12">
-          <Login />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12">
-          <Register />
-        </v-col>
-      </v-row> -->
       <v-row class="pt-5">
         <v-col cols="12">
           <v-card
