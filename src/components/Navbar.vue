@@ -62,14 +62,16 @@
                 </v-list-item>
                 <v-divider class="hidden-md-and-up"></v-divider>
                 <v-subheader>Korisnici</v-subheader>
-                <v-list-item>
-                  <v-list-item-icon>
-                    <v-icon>mdi-account</v-icon>
-                  </v-list-item-icon>
-                  <v-list-item-content>
-                    <v-btn text to="/korisnici">Korisnici</v-btn>
-                  </v-list-item-content>
-                </v-list-item>
+                <router-link to="/korisnici" style="text-decoration: none">
+                  <v-list-item>
+                    <v-list-item-icon>
+                      <v-icon>mdi-account</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                        Korisnici
+                    </v-list-item-content>
+                  </v-list-item>
+                </router-link>
               </v-list-item-group>
             </v-list>
           </v-card>

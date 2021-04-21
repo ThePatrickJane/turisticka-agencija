@@ -35,23 +35,23 @@
 
       <v-container>
         <v-row class="pa-5">
-          <v-col lg="3" md="4" sm="6" cols="12" v-for="i in 10" :key="i">
+          <v-col lg="3" md="4" sm="6" cols="12" v-for="grad in gradovi" :key="grad.naziv">
             <v-card class="mx-auto">
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img>
+              <v-img :src="grad.slika" height="160px"></v-img>
 
               <v-card-title class="text-capitalize">
-                <span>Ime grada</span>
+                <span>{{grad.naziv}}</span>
               </v-card-title>
 
               <v-divider></v-divider>
 
               <v-card-subtitle>
-                Broj turistickih ruta: 13
+                Broj turistickih atrakcija: {{grad.brojAtrakcija}}
               </v-card-subtitle>
 
               <v-card-actions>
                 <v-btn color="light-blue darken-4" text>
-                  Detalji
+                  Atrakcije
                   <v-icon right>
                     mdi-chevron-right
                   </v-icon>
@@ -59,36 +59,6 @@
               </v-card-actions>
             </v-card>
           </v-col>
-          <!-- <v-col lg="3" md="4" sm="6" cols="12">
-            <v-card>
-              <v-card-title>text1</v-card-title>
-            </v-card>
-          </v-col>
-          <v-col lg="3" md="4" sm="6" cols="12">
-            <v-card>
-              <v-card-title>text1</v-card-title>
-            </v-card>
-          </v-col>
-          <v-col lg="3" md="4" sm="6" cols="12">
-            <v-card>
-              <v-card-title>text1</v-card-title>
-            </v-card>
-          </v-col>
-          <v-col lg="3" md="4" sm="6" cols="12">
-            <v-card>
-              <v-card-title>text1</v-card-title>
-            </v-card>
-          </v-col>
-          <v-col lg="3" md="4" sm="6" cols="12">
-            <v-card>
-              <v-card-title>text1</v-card-title>
-            </v-card>
-          </v-col>
-          <v-col lg="3" md="4" sm="6" cols="12">
-            <v-card>
-              <v-card-title>text1</v-card-title>
-            </v-card>
-          </v-col> -->
         </v-row>
       </v-container>
     </div>
@@ -102,13 +72,13 @@ export default {
   name: 'Home',
   data () {
     return {
-      
+      gradovi: []
     }
   },
   created () {
-    // db.ref('korisnici').on('value', (snapshot) => {
-    //   this.korisnici = snapshot.val()
-    // })
+    db.ref('gradovi').on('value', (snapshot) => {
+      this.gradovi = snapshot.val()
+    })
   }
 }
 </script>

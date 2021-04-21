@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Korisnici from '../views/Korisnici.vue'
+import Profil from '../views/Profil.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/korisnici',
     name: 'Korisnici',
     component: Korisnici
+  },
+  {
+    path: '/profil/:korisnicko_ime',
+    name: 'Profil',
+    component: Profil
   },
   {
     path: '/about',

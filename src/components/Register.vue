@@ -60,7 +60,7 @@
                 </v-col>
                 <v-col cols="5">
                   <v-text-field 
-                    prefix="+381" 
+                    placeholder="06xxxxxxxx"
                     dense 
                     label="Telefon" 
                     :rules="phoneRule"></v-text-field>
@@ -124,7 +124,7 @@ export default {
       ],
       phoneRule: [
         v => !!v || 'Polje ne sme biti prazno',
-        v => /^6(([0-6]|[8-9])\d{7}|(77|78)\d{6}){1}$/.test(v) || 'Broj telefona nije validan',
+        v => /^06(([0-6]|[8-9])\d{6,7}|(77|78)\d{5,6}){1}$/.test(v) || 'Broj telefona nije validan',
       ]
     }
   },
