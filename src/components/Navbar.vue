@@ -61,7 +61,7 @@
                   </v-list-item-content>
                 </v-list-item>
                 <v-divider class="hidden-md-and-up"></v-divider>
-                <v-subheader>Korisnici</v-subheader>
+                <v-subheader class="hidden-md-and-up">Ostali linkovi</v-subheader>
                 <router-link to="/korisnici" style="text-decoration: none">
                   <v-list-item>
                     <v-list-item-icon>
