@@ -50,12 +50,17 @@
               </v-card-subtitle>
 
               <v-card-actions>
-                <v-btn color="light-blue darken-4" text>
-                  Atrakcije
-                  <v-icon right>
-                    mdi-chevron-right
-                  </v-icon>
-                </v-btn>
+                <router-link :to="{ 
+                    name: 'Grad', 
+                    params: { ime: grad.naziv}}"       
+                    style="text-decoration: none">
+                  <v-btn color="light-blue darken-4" text>
+                    Atrakcije
+                    <v-icon right>
+                      mdi-chevron-right
+                    </v-icon>
+                  </v-btn>
+                </router-link>
               </v-card-actions>
             </v-card>
           </v-col>
