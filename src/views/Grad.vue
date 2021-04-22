@@ -14,7 +14,7 @@
           style="text-decoration: none"
         >
           <v-btn color="light-blue darken-4" text>
-            Preporucene rute
+            Preporucene ture
             <v-icon right>
               mdi-chevron-right
             </v-icon>

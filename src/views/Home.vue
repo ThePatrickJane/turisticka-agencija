@@ -46,7 +46,7 @@
               <v-divider></v-divider>
 
               <v-card-subtitle>
-                Broj turistickih atrakcija: {{grad.brojAtrakcija}}
+                Broj turistickih tura / atrakcija: {{grad.brojAtrakcija}}
               </v-card-subtitle>
 
               <v-card-actions>
