@@ -5,6 +5,7 @@ import Korisnici from '../views/Korisnici.vue'
 import Profil from '../views/Profil.vue'
 import Grad from '../views/Grad.vue'
 import Ruta from '../views/Ruta.vue'
+import PreporuceneRute from '../views/PreporuceneRute.vue'
 
 Vue.use(VueRouter)
 
@@ -30,17 +31,14 @@ const routes = [
     component: Grad
   },
   {
-    path: '/ruta/:naziv',
-    name: 'Ruta',
-    component: Ruta
+    path: '/grad/:ime/preporuka',
+    name: 'PreporuceneRute',
+    component: PreporuceneRute
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/ruta/:id',
+    name: 'Ruta',
+    component: Ruta
   }
 ]
 

@@ -2,11 +2,24 @@
   <v-container>
     <v-row>
       <v-col cols="12" class="mb-3">
-        <v-card class="py-5 mx-auto" flat max-width="600px">
+        <v-card class="pt-5 mx-auto" flat max-width="600px">
           <v-card-text class="text-uppercase text-h4 text-center light-blue darken-3">
             <span style="color: white">{{this.$route.params.ime}}</span>
           </v-card-text>
         </v-card>
+      </v-col>
+      <v-col cols="12" class="text-center mb-5">
+        <router-link 
+          :to="{name: 'PreporuceneRute', params: { ime: this.$route.params.ime }}"
+          style="text-decoration: none"
+        >
+          <v-btn color="light-blue darken-4" text>
+            Preporucene rute
+            <v-icon right>
+              mdi-chevron-right
+            </v-icon>
+          </v-btn>
+        </router-link>
       </v-col>
     </v-row>
     <v-row>
@@ -59,7 +72,7 @@
           <v-card-actions>
             <router-link :to="{ 
                 name: 'Ruta', 
-                params: { naziv: atrakcija.id }}"       
+                params: { id: atrakcija.id }}"       
                 style="text-decoration: none">
               <v-btn color="light-blue darken-4" text>
                 Detalji
@@ -87,10 +100,10 @@ export default {
     }
   },
   async created () {
-    await db.ref('gradovi').once('value', async (snapshot) => {
+    await db.ref('gradovi').once('value', (snapshot) => {
       this.getIdAtrakcija(snapshot.val())
     })
-    await db.ref('turistickeAtrakcije/' + this.atrakcija_id).once('value', async (snapshot) => {
+    await db.ref('turistickeAtrakcije/' + this.atrakcija_id).once('value', (snapshot) => {
       this.getAtrakcije(snapshot.val())
     })
   },
@@ -109,7 +122,6 @@ export default {
           atrakcija: value
         })
       })
-      console.log(this.atrakcije)
     }
   }
 }
