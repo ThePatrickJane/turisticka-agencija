@@ -18,6 +18,7 @@
               </v-col>
               <v-col cols="6">
                 <v-text-field
+                  :disabled="disable"
                   :rules="passwordRule"
                   v-model="korisnik.password"
                   dense
@@ -30,23 +31,24 @@
             </v-row>
             <v-row>
               <v-col cols="6">
-                <v-text-field v-model="korisnik.ime" dense label="Ime" :rules="emptyRule"></v-text-field>
+                <v-text-field :disabled="disable" v-model="korisnik.ime" dense label="Ime" :rules="emptyRule"></v-text-field>
               </v-col>
               <v-col cols="6">
-                <v-text-field v-model="korisnik.prezime" dense label="Prezime" :rules="emptyRule"></v-text-field>
+                <v-text-field :disabled="disable" v-model="korisnik.prezime" dense label="Prezime" :rules="emptyRule"></v-text-field>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="12">
-                <v-text-field v-model="korisnik.email" dense label="Email" :rules="emailRule"></v-text-field>
+                <v-text-field :disabled="disable" v-model="korisnik.email" dense label="Email" :rules="emailRule"></v-text-field>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="7">
-                <v-text-field v-model="korisnik.adresa" dense label="Adresa stanovanja" :rules="emptyRule"></v-text-field>
+                <v-text-field :disabled="disable" v-model="korisnik.adresa" dense label="Adresa stanovanja" :rules="emptyRule"></v-text-field>
               </v-col>
               <v-col cols="5">
                 <v-text-field 
+                  :disabled="disable"
                   v-model="korisnik.telefon"
                   placeholder="06xxxxxxxx"
                   dense 
@@ -63,6 +65,7 @@
                 >
                   <template v-slot:activator="{ on, attrs }">
                     <v-text-field
+                      :disabled="disable"
                       prepend-icon="mdi-calendar"
                       :rules="emptyRule"
                       dense
@@ -79,7 +82,20 @@
             </v-row>
             <v-row>
               <v-col cols="12">
-                <v-btn color="blue darken-1" dark depressed tile @click="saveValidate">Sacuvaj</v-btn>
+                <v-btn color="blue darken-1" dark depressed tile @click="disable = !disable">
+                  {{disable ? 'Izmeni' : 'Vrati'}}
+                </v-btn>
+                <v-btn 
+                  class="ml-3"
+                  v-if="!disable" 
+                  color="blue darken-1" 
+                  dark 
+                  depressed 
+                  tile 
+                  @click="saveValidate"
+                  >
+                    Sacuvaj
+                  </v-btn>
               </v-col>
             </v-row>
           </v-container>
@@ -101,6 +117,7 @@ export default {
       show: false,
       menu: false,
       date: '',
+      disable: true,
       emptyRule: [
         v => !!v || 'Polje ne sme biti prazno'
       ],

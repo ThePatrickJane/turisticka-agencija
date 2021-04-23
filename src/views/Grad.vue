@@ -71,9 +71,9 @@
 
           <v-card-actions>
             <router-link :to="{ 
-                name: 'Ruta', 
-                params: { id: atrakcija.id }}"       
-                style="text-decoration: none">
+              name: 'Ruta', 
+              params: { id: atrakcija.id }}"       
+              style="text-decoration: none">
               <v-btn color="light-blue darken-4" text>
                 Detalji
                 <v-icon right>
