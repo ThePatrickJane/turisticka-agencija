@@ -19,18 +19,18 @@
         <v-card-text>
           <v-form ref="regForm">
             <v-container>
-              <v-row style="background-color: lightblue" class="mt-2" id="reg">
+              <v-row style="background-color: lightblue" class="my-2" id="reg">
                 <v-col>Registracija</v-col>
               </v-row>
               <v-row>
-                <v-col cols="6">
+                <v-col cols="12" sm="6">
                   <v-text-field
                     :rules="emptyRule"
                     dense
                     label="Korisnicko ime"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="12" sm="6">
                   <v-text-field
                     :rules="passwordRule"
                     dense
@@ -42,10 +42,10 @@
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="6">
+                <v-col cols="12" sm="6">
                   <v-text-field dense label="Ime" :rules="emptyRule"></v-text-field>
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="12" sm="6">
                   <v-text-field dense label="Prezime" :rules="emptyRule"></v-text-field>
                 </v-col>
               </v-row>
@@ -55,10 +55,10 @@
                 </v-col>
               </v-row>
               <v-row>
-                <v-col cols="7">
+                <v-col cols="12" sm="7">
                   <v-text-field dense label="Adresa stanovanja" :rules="emptyRule"></v-text-field>
                 </v-col>
-                <v-col cols="5">
+                <v-col cols="12" sm="5">
                   <v-text-field 
                     placeholder="06xxxxxxxx"
                     dense 
