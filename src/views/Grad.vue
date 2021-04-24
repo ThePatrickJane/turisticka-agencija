@@ -31,12 +31,12 @@
             :src="atrakcija.atrakcija.slika"
           ></v-img>
 
-          <v-card-title>{{atrakcija.atrakcija.naziv}}</v-card-title>
+          <v-card-text class="text-h6 blue--text">{{atrakcija.atrakcija.naziv}}</v-card-text>
 
           <v-card-text>
             <v-row
-              align="center"
-              class="mx-0"
+              justify="center"
+              class="mx-0 mb-4"
             >
               <v-rating
                 :value="atrakcija.atrakcija.ocena"
@@ -45,6 +45,7 @@
                 half-increments
                 readonly
                 size="20"
+                class="pl-0"
               ></v-rating>
 
               <div class="amber--text ml-4">
@@ -56,9 +57,9 @@
               Cena: {{atrakcija.atrakcija.cena}}
             </div>
 
-            <div class="mb-2 subtitle-1">
+            <!-- <div class="mb-2 subtitle-1">
               Jezik vodica: {{atrakcija.atrakcija.jezikVodica || "Nema tog podatka"}}
-            </div>
+            </div> -->
 
             <div class="mt-2 mb-4 subtitle-1">
               Tip: {{atrakcija.atrakcija.tip || "Nema tog podatka"}}

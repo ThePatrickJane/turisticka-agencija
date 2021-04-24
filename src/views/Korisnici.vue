@@ -18,8 +18,8 @@
             vertical
           ></v-divider>
           <v-dialog v-model="dialogDelete" max-width="500px">
-            <v-card>
-              <v-card-title>Da li sigurno zelite da obrisete korisnika?</v-card-title>
+            <v-card class="pt-4">
+              <v-card-text class="text-center">Da li sigurno zelite da obrisete korisnika?</v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-1" text @click="closeDelete">Otkazi</v-btn>

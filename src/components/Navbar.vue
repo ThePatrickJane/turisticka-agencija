@@ -74,6 +74,7 @@
 <script>
 import Login from './Login.vue'
 import Register from './Register.vue'
+import { db } from "../db"
 
 export default {
   name: "Navbar",
@@ -83,8 +84,14 @@ export default {
   data () {
     return {
       drawer: false,
-      group: null
+      group: null,
+      gradovi: []
     }
+  },
+  created () {
+    db.ref('gradovi').on('value', (snapshot) => {
+      this.gradovi = snapshot.val()
+    })
   }
 }
 </script>
