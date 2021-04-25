@@ -115,6 +115,46 @@
                         <v-col cols="12">
                           <v-btn color="blue darken-1" dark depressed tile @click="dialog = false">Otkazi</v-btn>
                           <v-btn color="blue darken-1" dark depressed tile @click="saveValidate" class="ml-3">Sacuvaj</v-btn>
+                          <v-dialog
+                            v-model="deleteDialog"
+                            width="500"
+                          >
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-btn 
+                                v-bind="attrs"
+                                v-on="on"
+                                color="red darken-1" 
+                                dark 
+                                depressed 
+                                tile 
+                                @click="deleteDialog = true" 
+                                class="ml-3"
+                              >Izbrisi turu</v-btn>
+                            </template>
+
+                            <v-card class="pt-4">
+                              <v-card-text class="text-center">Da li sigurno zelite da obrisete turu?</v-card-text>
+                              <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn color="blue darken-1" text @click="deleteDialog = false">Otkazi</v-btn>
+                                <v-btn color="blue darken-1" text @click="openSnackbar">OK</v-btn>
+                                <v-spacer></v-spacer>
+                              </v-card-actions>
+                            </v-card>
+                          </v-dialog>
+                          <v-snackbar v-model="snackbar">
+                            Uspesno ste izbrisali turu. Bicete preusmereni na stranicu sa svim turama.
+                            <template v-slot:action="{ attrs }">
+                              <v-btn
+                                color="pink"
+                                text
+                                v-bind="attrs"
+                                @click="snackbar = false"
+                              >
+                                Close
+                              </v-btn>
+                            </template>
+                          </v-snackbar>
                         </v-col>
                       </v-row>
                     </v-container>
@@ -202,6 +242,8 @@ export default {
     return {
       ruta: null,
       dialog: false,
+      deleteDialog: false,
+      snackbar: false,
       boje: ['red', 'purple', 'blue', 'yellow', 'green'],
       emptyRule: [
         v => !!v || 'Polje ne sme biti prazno'
@@ -237,6 +279,14 @@ export default {
         edit.style.backgroundColor = "lightgreen"
       else 
         edit.style.backgroundColor = "rgb(224, 79, 79)"
+    },
+    openSnackbar() {
+      this.deleteDialog = false
+      this.snackbar = true
+      setTimeout(() => { 
+        this.snackbar = false
+        this.$router.push('/')
+      }, 3000)
     }
   }
 }
