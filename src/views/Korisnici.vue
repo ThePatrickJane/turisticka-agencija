@@ -6,6 +6,10 @@
       sort-by="ime"
       dense
       class="elevation-1"
+      :footer-props="{
+        nextIcon: 'mdi-plus',
+           'items-per-page-text':'Redovi po strani'
+      }"
     >
       <template v-slot:top>
         <v-toolbar

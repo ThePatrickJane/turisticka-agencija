@@ -24,19 +24,19 @@
     </v-row>
     <v-row>
       <v-col lg="3" md="6" sm="6" cols="12" v-for="atrakcija in atrakcije" :key="atrakcija.naziv">
-        <v-card>
+        <v-card height="100%" style="padding-bottom: 50px">
 
           <v-img
             height="250"
             :src="atrakcija.atrakcija.slika"
           ></v-img>
 
-          <v-card-text class="text-h6 blue--text">{{atrakcija.atrakcija.naziv}}</v-card-text>
+          <v-card-text class="text-h6 blue--text text-center">{{atrakcija.atrakcija.naziv}}</v-card-text>
 
           <v-card-text>
             <v-row
               justify="center"
-              class="mx-0 mb-4"
+              class="mx-0"
             >
               <v-rating
                 :value="atrakcija.atrakcija.ocena"
@@ -47,14 +47,16 @@
                 size="20"
                 class="pl-0"
               ></v-rating>
+            </v-row>
 
-              <div class="amber--text ml-4">
+            <v-row justify="center">
+              <div class="amber--text mb-4">
                 {{atrakcija.atrakcija.ocena}}
               </div>
             </v-row>
 
             <div class="mt-4 mb-2 subtitle-1">
-              Cena: {{atrakcija.atrakcija.cena}}
+              <strong>Cena</strong>: {{atrakcija.atrakcija.cena}}
             </div>
 
             <!-- <div class="mb-2 subtitle-1">
@@ -62,26 +64,21 @@
             </div> -->
 
             <div class="mt-2 mb-4 subtitle-1">
-              Tip: {{atrakcija.atrakcija.tip || "Nema tog podatka"}}
+              <strong>Tip</strong>: {{atrakcija.atrakcija.tip || "Nema tog podatka"}}
             </div>
 
             <div>{{atrakcija.atrakcija.kratakOpis}}</div>
           </v-card-text>
 
-          <v-divider class="mx-4"></v-divider>
-
-          <v-card-actions>
-            <router-link :to="{ 
-              name: 'Ruta', 
-              params: { id: atrakcija.id }}"       
-              style="text-decoration: none">
-              <v-btn color="light-blue darken-4" text>
-                Detalji
-                <v-icon right>
-                  mdi-chevron-right
-                </v-icon>
-              </v-btn>
-            </router-link>
+          <v-card-actions style="position: absolute; bottom: 0">
+            <v-btn bottom color="light-blue darken-4" text :to="{ 
+            name: 'Ruta', 
+            params: { id: atrakcija.id }}">
+              Detalji
+              <v-icon right>
+                mdi-chevron-right
+              </v-icon>
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

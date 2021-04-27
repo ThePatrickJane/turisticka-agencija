@@ -56,12 +56,13 @@
                           ></v-text-field>
                         </v-col>
                         <v-col cols="12" sm="6">
-                          <v-text-field
+                          <v-select
+                            dense
+                            :items="tipovi"
+                            label="Tip ture"
                             :value="ruta.tip"
                             :rules="emptyRule"
-                            dense
-                            label="Tip ture"
-                          ></v-text-field>
+                          ></v-select>
                         </v-col>
                       </v-row>
                       <v-row>
@@ -89,7 +90,7 @@
                             :value="ruta.trajanje"
                             :rules="zeroRule"
                             dense
-                            label="Trajanje ture (u satima)"
+                            label="Trajanje ture (u minutima)"
                           ></v-text-field>
                         </v-col>
                       </v-row>
@@ -179,7 +180,7 @@
             <strong>Maksimalan broj osoba</strong>: {{ruta.maxOsobe}}
           </v-card-text>
           <v-card-text class="pl-0 my-0 py-0">
-            <strong>Trajanje</strong>: {{ruta.trajanje}}h
+            <strong>Trajanje</strong>: {{ruta.trajanje}} minuta
           </v-card-text>
           <!-- <v-card-text class="pl-0 my-0 py-0">
             <strong>Jezik vodica</strong>: {{ruta.jezikVodica || "Nema tog podatka"}}
@@ -215,10 +216,10 @@
             >
               <span class="font-weight-light caption">{{index + 1}} zvezdica</span>
               <v-progress-linear
-                class="mb-1"
-                :buffer-value="ruta.ocene.reduce((a, b) => a + b, 0) * 10"
-                :value="ocena * 10"
-                height="20px"
+                style="width: 60%"
+                :buffer-value="ruta.ocene.reduce((a, b) => a + b, 0) * 2"
+                :value="ocena * 2"
+                height="15px"
                 :color="boje[index]"
                 background-color="rgb(207, 207, 207)"
               >
@@ -244,12 +245,14 @@ export default {
       dialog: false,
       deleteDialog: false,
       snackbar: false,
+      tipovi: ['Panoramsko razgledanje', 'Krstarenje', 'Pesacka', 'Biciklisticka'],
       boje: ['red', 'purple', 'blue', 'yellow', 'green'],
       emptyRule: [
-        v => !!v || 'Polje ne sme biti prazno'
+        v => !!v || 'Polje ne sme biti prazno',
+        v => (v.trim() != '') || 'Polje ne sme sadrzati samo razmake'
       ],
       zeroRule: [
-        v => v != 0 || 'Polje ne sme biti nula'
+        v => (v != 0 && v > 0)|| 'Vrednost mora biti veca od nule',
       ]
     }
   },
@@ -275,8 +278,12 @@ export default {
     saveValidate() {
       let edit = document.getElementById("edit")
 
-      if (this.$refs.editForm.validate()) 
+      if (this.$refs.editForm.validate()) {
         edit.style.backgroundColor = "lightgreen"
+        setTimeout(() => { 
+          this.dialog = false
+        }, 2000)
+      }
       else 
         edit.style.backgroundColor = "rgb(224, 79, 79)"
     },

@@ -112,7 +112,8 @@ export default {
       menu: false,
       date: '',
       emptyRule: [
-        v => !!v || 'Polje ne sme biti prazno'
+        v => !!v || 'Polje ne sme biti prazno',
+        v => (v.trim() != '') || 'Polje ne sme sadrzati samo razmake'
       ],
       passwordRule: [
         v => !!v || 'Polje ne sme biti prazno',
@@ -132,8 +133,12 @@ export default {
     registerValidate() {
       let reg = document.getElementById("reg")
 
-      if (this.$refs.regForm.validate()) 
+      if (this.$refs.regForm.validate()) {
         reg.style.backgroundColor = "lightgreen"
+        setTimeout(() => { 
+          this.dialog = false
+        }, 2000)
+      }
       else 
         reg.style.backgroundColor = "rgb(224, 79, 79)"
     }

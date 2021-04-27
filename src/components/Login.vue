@@ -79,7 +79,8 @@ export default {
       lozinka: null,
       poruka: null,
       usernameRule: [
-        v => !!v || 'Polje ne sme biti prazno'
+        v => !!v || 'Polje ne sme biti prazno',
+        v => (v.trim() != '') || 'Polje ne sme sadrzati samo razmake'
       ],
       passwordRule: [
         v => !!v || 'Polje ne sme biti prazno'
@@ -115,6 +116,9 @@ export default {
         if (ulogovan) {
           log.style.backgroundColor = "lightgreen"
           this.poruka = null
+          setTimeout(() => { 
+            this.dialog = false
+          }, 2000)
         }
         else {
           log.style.backgroundColor = "rgb(224, 79, 79)"

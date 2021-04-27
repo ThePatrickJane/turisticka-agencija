@@ -1,0 +1,13 @@
+R --- Login i registracija, nakon uspjesne prijave da se skloni pop-up.
+
+R --- Stranica sa svim turama - kartice da budu jednake po visini i naslovi da se centriraju, ocjena da bude centrirana ispod zvjezdica i labele malo boldovati (ne previse) ali da se razlikuju od ostataka teksta
+
+R --- Izmjena ture - tip ture bi trebao biti select, obzirom da postoje tacno 4 tipa ture. Takodje ubaciti JavaScript validacije, nigdje nije zabranjeno da se polja popune samo whitespace-ovima (obratiti paznju i na ostale moguce "lose" podatke, pa tu validaciju provudi kroz JavaScript) ; slicno kao i kod registracije, modalni dijalog da se zatvori nakon uspjesne izmjene. Prikazati da je izmjena uspjesna, pa onda zatvoriti dijalog.
+
+R --- Trajanja tura su u minutima, pa umjesto sati staviti min
+
+R --- Stranica gdje se prikazuje jedna tura, promijeniti dizajn, obzirom da centralni dio stranice predstavljaju ocjene, vazne su, ali ne i najvaznije, previse su velike u odnosi na ostali sadrzaj stranice
+
+R --- Rows per page na stranici sa korisnicima promijeniti na srpski ako je moguce
+
+Stranica sa preporucenim turama u okviru kartice ima dosta praznog prostora, ispod teksta, razmisliti da se jos nesto ubaci, drugacije rasporedi, te da ta stranica bude zanimljiva da privuce korisnika da stvarno predje na stranicu i dobije vise detalja o konkretnoj turi
