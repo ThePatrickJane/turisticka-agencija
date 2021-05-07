@@ -80,7 +80,7 @@ export default {
       poruka: null,
       usernameRule: [
         v => !!v || 'Polje ne sme biti prazno',
-        v => (v.trim() != '') || 'Polje ne sme sadrzati samo razmake'
+        v => (v && v.trim() != '') || 'Polje ne sme sadrzati samo razmake'
       ],
       passwordRule: [
         v => !!v || 'Polje ne sme biti prazno'
@@ -126,6 +126,8 @@ export default {
         }
 
       }
+      else 
+        log.style.backgroundColor = "rgb(224, 79, 79)"
     }
   }
 }

@@ -119,7 +119,8 @@ export default {
       date: '',
       disable: true,
       emptyRule: [
-        v => !!v || 'Polje ne sme biti prazno'
+        v => !!v || 'Polje ne sme biti prazno',
+        v => (v && v.trim() != '') || 'Polje ne sme sadrzati samo razmake'
       ],
       passwordRule: [
         v => !!v || 'Polje ne sme biti prazno',

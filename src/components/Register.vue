@@ -85,7 +85,7 @@
                         v-on="on"
                       ></v-text-field>
                     </template>
-                    <v-date-picker v-model="date" no-title></v-date-picker>
+                    <v-date-picker v-model="date" :max="nowDate" no-title></v-date-picker>
                   </v-menu>
                 </v-col>
               </v-row>
@@ -107,13 +107,14 @@ export default {
   name: 'Register',
   data () {
     return { 
+      nowDate: new Date().toISOString().slice(0, 10),
       dialog: false,
       show: false,
       menu: false,
       date: '',
       emptyRule: [
         v => !!v || 'Polje ne sme biti prazno',
-        v => (v.trim() != '') || 'Polje ne sme sadrzati samo razmake'
+        v => (v && v.trim() != '') || 'Polje ne sme sadrzati samo razmake'
       ],
       passwordRule: [
         v => !!v || 'Polje ne sme biti prazno',
@@ -141,7 +142,8 @@ export default {
       }
       else 
         reg.style.backgroundColor = "rgb(224, 79, 79)"
-    }
+    },
+    dozvoljeniDatumi: val => val > Date.now()
   }
 }
 </script>
