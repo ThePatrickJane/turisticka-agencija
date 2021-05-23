@@ -92,6 +92,7 @@
               <v-row>
                 <v-col cols="12">
                   <v-btn color="blue darken-1" dark depressed tile @click="registerValidate">Registruj se</v-btn>
+                  <v-btn class="ml-3" color="red darken-1" dark depressed tile @click="dialog = false">Otkazi</v-btn>
                 </v-col>
               </v-row>
             </v-container>

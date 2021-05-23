@@ -22,7 +22,9 @@
           <v-form ref="logForm">
             <v-container>
               <v-row style="background-color: lightblue" class="my-2" id="log">
-                <v-col>Prijava</v-col>
+                <v-col>
+                  Prijava
+                </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12">
@@ -55,6 +57,7 @@
               <v-row>
                 <v-col cols="12">
                   <v-btn color="blue darken-1" dark depressed tile @click="loginValidate">Prijavi se</v-btn>
+                  <v-btn class="ml-3" color="red darken-1" dark depressed tile @click="dialog = false">Otkazi</v-btn>
                 </v-col>
               </v-row>
             </v-container>

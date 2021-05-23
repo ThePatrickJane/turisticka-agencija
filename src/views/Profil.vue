@@ -11,6 +11,7 @@
               <v-col cols="6">
                 <v-text-field
                   v-model="korisnik.username"
+                  :rules="emptyRule"
                   disabled
                   dense
                   label="Korisnicko ime"
@@ -76,7 +77,7 @@
                       v-on="on"
                     ></v-text-field>
                   </template>
-                  <v-date-picker v-model="korisnik.datumRodjenja" no-title></v-date-picker>
+                  <v-date-picker :max="nowDate" no-title></v-date-picker>
                 </v-menu>
               </v-col>
             </v-row>
@@ -112,6 +113,7 @@ export default {
   name: 'Profil',
   data () {
     return {
+      nowDate: new Date().toISOString().slice(0, 10),
       korisnici: null,
       korisnik: null,
       show: false,

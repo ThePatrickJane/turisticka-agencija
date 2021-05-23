@@ -193,7 +193,7 @@
 
       <v-col xl="5" sm="7" cols="12">
         <v-card class="pl-0 pt-0" flat>
-          <v-card-text class="pt-0 pl-0">
+          <v-card-text class="pt-0 pl-0 text-justify">
             <strong>Opis</strong>: {{ruta.opis}}
           </v-card-text>
 
